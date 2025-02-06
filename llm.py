@@ -67,7 +67,6 @@ def get_dictionary_chain():
 
 store = {}
 
-
 def get_session_history(session_id: str) -> BaseChatMessageHistory:
   if session_id not in store:
       store[session_id] = ChatMessageHistory()
@@ -135,7 +134,7 @@ def get_rag_chain():
   system_prompt = (
     "당신은 전세사기 피해자법 전문가입니다. 사용자의 전세사기 피해자관련 질문에 답변해주세요."
     "아래에 제공된 문서를 활용해서 답변해주시고,"
-    "답변을 알 수 없다면, 모른다고 답변해주세요."
+    # "답변을 알 수 없다면, 모른다고 답변해주세요."
     "답변을 제공할 때는 '전세사기피해자법 XX조에 따르면'으로 출처 표시해주세요."
     "\n\n"
     "{context}"
@@ -165,7 +164,6 @@ def get_rag_chain():
   return conversational_rag_chain
 
 
-## [AI Message 함수 정의] +++++++++++++++++++++++++++++++++++++++++++++++++++
 def get_ai_response(user_message):
   dictionary_chain = get_dictionary_chain()
   # qa_chain = get_qa_chain()
@@ -179,4 +177,3 @@ def get_ai_response(user_message):
   
   return ai_response
   # return ai_message['answer']
-## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

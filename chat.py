@@ -2,18 +2,18 @@ import streamlit as st
 from llm import get_ai_response
 
 ##########################################################
-## 전세사기 피해 당한 사람이 받을 수 있는 금융 지원은?
+## Q1: 전세사기 피해 당한 사람이 받을 수 있는 금융 지원은?
+## Q2: 전세사기를 당했습니다. 어떤 법적 조치를 해야하나요?
 ##########################################################
 
 st.set_page_config(page_title='전세사기피해자자 상담 챗봇', page_icon='🍀')
 st.title('전세사기피해자 상담 챗봇')
 st.caption('전세사기피해 법률 상담해드립니다.')
 
-
 if 'message_list' not in st.session_state:
   st.session_state.message_list = []
 
-print(f'before: {st.session_state.message_list}')
+# print(f'before: {st.session_state.message_list}')
 
 for message in st.session_state.message_list:
   with st.chat_message(message['role']):
@@ -32,4 +32,4 @@ if user_question := st.chat_input(placeholder='전세사기 피해와 관련된 
       st.session_state.message_list.append({'role': 'ai', 'content': ai_message})
 
 
-print(f'after: {st.session_state.message_list}')
+# print(f'after: {st.session_state.message_list}')
